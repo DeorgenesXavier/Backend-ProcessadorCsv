@@ -9,5 +9,4 @@ public class RestCsvProcessorApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RestCsvProcessorApplication.class, args);
 	}
-
 }
