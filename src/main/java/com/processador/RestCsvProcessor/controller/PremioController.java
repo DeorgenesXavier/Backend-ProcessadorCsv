@@ -1,25 +1,27 @@
 package com.processador.RestCsvProcessor.controller;
 
-import com.processador.RestCsvProcessor.service.ProcessaCsv;
-import com.processador.RestCsvProcessor.util.ConstantsUtil;
+import com.processador.RestCsvProcessor.dto.PremioDto;
+import com.processador.RestCsvProcessor.dto.PremioDtoResponse;
+import com.processador.RestCsvProcessor.service.FilmeService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
-
-import static com.processador.RestCsvProcessor.util.ConstantsUtil.DIRETORIO;
 
 @AllArgsConstructor
 @RestController
 public class PremioController {
 
-    private ProcessaCsv processaCsv;
+    private FilmeService filmeService;
 
-    @RequestMapping("/premios")
-    public List<String> listar() throws IOException {
-        return processaCsv.leArquivoCsv(DIRETORIO);
+    @RequestMapping(value = "/premios", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public PremioDtoResponse listar() throws Exception {
+
+        List<PremioDto> premios = filmeService.retornaRequisitos();
+
+        return new PremioDtoResponse(premios.get(0),premios.get(1));
     }
 }
