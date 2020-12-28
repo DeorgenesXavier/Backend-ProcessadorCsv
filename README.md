@@ -1,7 +1,8 @@
-# provaAgibank
+# RestCsvProcessor
 
-	Este projeto é um processador de dados, que realiza leituras periódicas de arquivos com a extensão .dat presentes
-	em um determinado diretório, filtrando as informações e produzindo um relatório com os resultados.
+	Este projeto é um processador de dados, que realiza uma única leitura no início da aplicação de um arquivo com o nomde de movielist.csv,
+	que deverá estar dentro da mesma pasta da application do projeto, filtrando as informações e traduzindo para uma tabela em memória,
+	retornando um cálcula via API REST no endpoins /premios, com os dois premiados em menor e maior intervalo de tempo.
 	Ele está codificado na linguagem Java, utilizando o Spring Boot framework.
 
 # Getting Started
