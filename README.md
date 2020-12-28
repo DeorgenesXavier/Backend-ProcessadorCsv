@@ -15,14 +15,10 @@
           
 	   - IntelliJ IDEA 2020.2.1: Necessário para o desenvolvimento do projeto e para executar os testes unitários. 
 
-	   - Definir a variável de ambiente HOMEPATH dentro de C:\Users\ - Recomendado por questões de permissões.
-	   
-	   - O(s) arquivo(s) .dat devem estar presentes dentro da pasta de leitura.
-
 # Developing
 
-	- git clone git@github.com:DejotaX/provaAgibank.git
-	- cd provaAgibank/
+	- git clone https://github.com/DeorgenesXavier/Backend-RestCsvProcessor.git
+	- cd Backend-RestCsvProcessor/
 
 # Build
 
@@ -30,10 +26,8 @@
 
 # Deploying 
  
- 	O projeto pode ser executado de diversas maneiras, porém irei citar apenas 3:
- 
- 		- Entrar na pasta do projeto e executar o "app.bat" que irá automaticamente executar o Jar do projeto.
- 
+ 	O projeto pode ser executado das seguintes maneiras:
+  
  		- Entrar na pasta do projeto e abrir um prompt de comando. Dentro dele basta digitar o comando: 
  		  "java -cp application.jar com.prova.agibank.ProvaAgibankDeorgenes.Application"
  
@@ -41,30 +35,27 @@
  
 # Features
 
-	Este projeto executa, em uma taxa de 10 segundos, a leitura de todos os arquivos com a extensão ".bat" que estejam presentes 
-	dentro do diretório "HOMPATH\data\in", gerando um relatório no diretório "HOMEPATH\data\out" com os dados da quantidade de 
-	clientes, vendedores, o id da venda mais cara e o nome do pior vendedor.
+	Este projeto executa, em sua inicialização, a leitura de todos os dados presentes no arquivo movielist com a extensão ".csv", 
+	após isso, ele deixa disponível no endpoint /premios, o nome, e os respectivos anos dos produtores que ganharam dois ou mais premios 
+	consecutivos no maior e no menor tempo.
 	
 	Os dados de entrada estão no seguinte formato:
 	
-	- Vendedor -> 001çCPFçNameçSalary
-	- Cliente  -> 002çCNPJçNameçBusiness Area
-	- Venda    -> 003çSale IDç[Item ID-Item Quantity-Item Price]çSalesman name
+	year;title;studios;producers;winner
 	
-	Devido ao formato dos dados de entrada, foi implementado um filtro para extrair a informação linha a linha, para que ela pudesse ser 
-	analisada e posteriormente gerar o relatório.
+	Devido ao formato dos dados de entrada, foi implementado um filtro para extrair a informação linha a linha e coluna a coluna, para que a informação pudesse ser 
+	analisada e posteriormente obter os requisitos da aplicação.
+	
+	No caso dos dados de studios, há a possibilidade de ter mais de um "studio" produzindo o mesmo filme, então foi usado o separador "," para filtrar os estudios.
+	
+	No caso dos "producers", também há a possibilidade de ter mais de um produtor, porém, o separador não é apenas por ",", mas também "and".
 
 
 # Configuration
 
-	- Neste projeto é possível configurar a taxa de leitura dos arquivos. Basta alterar o valor do parâmetro 
-	  "TAXA_LEITURA_mSEGUNDO" em Util\ConstantsUtil.java.
-	
-	- Atualmente o valor está configurado para 10 segundos. 
-	
-	- Como o @Scheduling do spring é configurado em milissegundos, o valor deverá ser de 10.000 para rodar a cada 10 segundos.
+	- No momento este projeto não tem nenhum parâmetro configurável.
  
 # Links
 
-	- Obrigado por ter lido até aqui. Em caso de bugs, entrar em contato pelo e-mail: deorgenes.junior@gmail.com xD
+	- Obrigado por ter lido até aqui. Em caso de elogios, melhorias ou bugs, entrar em contato pelo e-mail: deorgenes.junior@gmail.com xD
 
